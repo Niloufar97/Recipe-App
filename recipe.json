@@ -1,0 +1,284 @@
+{
+    "recipes": [
+      {
+        "name": "Spaghetti Bolognese",
+        "ingredients": [
+          "500g ground beef",
+          "1 onion, diced",
+          "2 cloves garlic, minced",
+          "1 can crushed tomatoes",
+          "1/2 cup red wine",
+          "1 tsp dried oregano",
+          "Salt and pepper to taste",
+          "250g spaghetti"
+        ],
+        "method": "1. In a pan, sauté onions and garlic. Add ground beef and cook until brown.\n2. Pour in crushed tomatoes and red wine. Season with oregano, salt, and pepper.\n3. Simmer for 30 minutes. Cook spaghetti separately.\n4. Serve Bolognese sauce over cooked spaghetti.",
+        "cookingTime": "45 minutes",
+        "country": "Italy",
+        "pictureUrl": "https://example.com/spaghetti_bolognese.jpg"
+      },
+      {
+        "name": "Spaghetti Bolognese",
+        "ingredients": [
+          "500g ground beef",
+          "1 onion, diced",
+          "2 cloves garlic, minced",
+          "1 can crushed tomatoes",
+          "1/2 cup red wine",
+          "1 tsp dried oregano",
+          "Salt and pepper to taste",
+          "250g spaghetti"
+        ],
+        "method": "1. In a pan, sauté onions and garlic. Add ground beef and cook until brown.\n2. Pour in crushed tomatoes and red wine. Season with oregano, salt, and pepper.\n3. Simmer for 30 minutes. Cook spaghetti separately.\n4. Serve Bolognese sauce over cooked spaghetti.",
+        "cookingTime": "45 minutes",
+        "country": "Italy",
+        "pictureUrl": "https://example.com/spaghetti_bolognese.jpg"
+      },
+      {
+        "name": "Margherita Pizza",
+        "ingredients": [
+          "Pizza dough",
+          "1/2 cup tomato sauce",
+          "Fresh mozzarella cheese",
+          "Fresh basil leaves",
+          "Olive oil",
+          "Salt to taste"
+        ],
+        "method": "1. Roll out pizza dough and spread tomato sauce.\n2. Add slices of fresh mozzarella and sprinkle with salt.\n3. Bake until crust is golden and cheese is bubbly.\n4. Garnish with fresh basil leaves and drizzle with olive oil.",
+        "cookingTime": "20 minutes",
+        "country": "Italy",
+        "pictureUrl": "https://example.com/margherita_pizza.jpg"
+      }, {
+        "name": "Risotto ai Funghi",
+        "ingredients": [
+          "1 cup Arborio rice",
+          "200g mushrooms, sliced",
+          "1 onion, finely chopped",
+          "2 cloves garlic, minced",
+          "1/2 cup white wine",
+          "4 cups vegetable broth",
+          "Parmesan cheese, grated",
+          "Fresh parsley, chopped"
+        ],
+        "method": "1. Sauté onions and garlic in olive oil. Add mushrooms and cook until tender.\n2. Stir in Arborio rice and cook until lightly toasted.\n3. Pour in white wine and cook until absorbed. Gradually add vegetable broth.\n4. Continue stirring until rice is creamy. Top with Parmesan and fresh parsley.",
+        "cookingTime": "30 minutes",
+        "country": "Italy",
+        "pictureUrl": "https://example.com/risotto_ai_funghi.jpg"
+      },
+      {
+        "name": "Osso Buco",
+        "ingredients": [
+          "4 veal shanks",
+          "1 cup diced tomatoes",
+          "1/2 cup white wine",
+          "1 onion, chopped",
+          "2 carrots, chopped",
+          "2 stalks celery, chopped",
+          "2 cloves garlic, minced",
+          "1 cup beef broth"
+        ],
+        "method": "1. Season veal shanks and brown in olive oil. Remove from pan.\n2. Sauté onions, carrots, celery, and garlic until softened.\n3. Return veal to the pan. Add tomatoes, white wine, and beef broth.\n4. Simmer until veal is tender. Serve with gremolata.",
+        "cookingTime": "2 hours",
+        "country": "Italy",
+        "pictureUrl": "https://example.com/osso_buco.jpg"
+      },{
+        "name": "Paneer Butter Masala",
+        "ingredients": [
+          "250g paneer, cubed",
+          "1 cup tomato puree",
+          "1 onion, finely chopped",
+          "2 cloves garlic, minced",
+          "1/2 cup cashews, soaked",
+          "1/4 cup cream",
+          "1 tsp garam masala",
+          "1 tsp cumin powder",
+          "1 tsp coriander powder",
+          "1/2 tsp turmeric",
+          "Salt to taste",
+          "2 tbsp butter",
+          "Fresh coriander leaves for garnish"
+        ],
+        "method": "1. Sauté onions and garlic in butter until golden brown.\n2. Add tomato puree, cashews, and spices. Cook until the oil separates.\n3. Blend the mixture into a smooth paste. Return it to the pan.\n4. Add paneer cubes and cream. Simmer until the paneer is heated through.\n5. Garnish with fresh coriander leaves and serve with naan or rice.",
+        "cookingTime": "30 minutes",
+        "country": "India",
+        "pictureUrl": "https://example.com/paneer_butter_masala.jpg"
+      }, {
+        "name": "Aloo Gobi",
+        "ingredients": [
+          "2 cups cauliflower florets",
+          "2 potatoes, cubed",
+          "1 onion, finely chopped",
+          "2 tomatoes, chopped",
+          "1/2 tsp cumin seeds",
+          "1/2 tsp turmeric powder",
+          "1 tsp cumin powder",
+          "1 tsp coriander powder",
+          "1/2 tsp red chili powder",
+          "Salt to taste",
+          "2 tbsp oil",
+          "Fresh coriander leaves for garnish"
+        ],
+        "method": "1. Heat oil in a pan and add cumin seeds. Once they splutter, add chopped onions.\n2. Sauté until onions are golden brown. Add turmeric, cumin powder, coriander powder, and red chili powder.\n3. Add chopped tomatoes and cook until they turn soft.\n4. Add cauliflower florets and cubed potatoes. Mix well.\n5. Cover and cook until vegetables are tender. Garnish with fresh coriander leaves.",
+        "cookingTime": "25 minutes",
+        "country": "India",
+        "pictureUrl": "https://example.com/aloo_gobi.jpg"
+      }, {
+        "name": "Smørrebrød",
+        "ingredients": [
+          "Dark rye bread slices",
+          "Butter",
+          "Sliced roast beef",
+          "Remoulade sauce",
+          "Pickles",
+          "Red onion rings",
+          "Fresh dill"
+        ],
+        "method": "1. Butter the slices of dark rye bread.\n2. Top with slices of roast beef.\n3. Add a dollop of remoulade sauce on top of the beef.\n4. Garnish with pickles, red onion rings, and fresh dill.\n5. Optionally, you can add additional toppings like sliced boiled eggs or shrimp.",
+        "cookingTime": "15 minutes",
+        "country": "Denmark",
+        "pictureUrl": "https://example.com/smorrebrod.jpg"
+      },  {
+        "name": "Frikadeller",
+        "ingredients": [
+          "500g ground pork",
+          "1 onion, finely chopped",
+          "1/2 cup breadcrumbs",
+          "1/2 cup milk",
+          "1 egg",
+          "Salt and pepper to taste",
+          "Butter or oil for frying"
+        ],
+        "method": "1. In a bowl, mix ground pork, chopped onions, breadcrumbs, milk, and beaten egg.\n2. Season with salt and pepper. Mix until well combined.\n3. Shape the mixture into small, flat patties (frikadeller).\n4. Fry the frikadeller in butter or oil until browned on both sides.\n5. Serve with potatoes, gravy, and lingonberry sauce.",
+        "cookingTime": "30 minutes",
+        "country": "Denmark",
+        "pictureUrl": "https://example.com/frikadeller.jpg"
+      },
+      {
+        "name": "Æblekage",
+        "ingredients": [
+          "4 apples, peeled and sliced",
+          "1/2 cup sugar",
+          "1 tsp cinnamon",
+          "1 cup breadcrumbs",
+          "1/2 cup melted butter",
+          "Whipped cream for serving"
+        ],
+        "method": "1. Preheat the oven to 350°F (180°C).\n2. In a bowl, mix sliced apples, sugar, and cinnamon.\n3. In a separate bowl, mix breadcrumbs with melted butter.\n4. Layer the sliced apples and breadcrumb mixture in a baking dish.\n5. Bake in the oven until the top is golden brown.\n6. Serve warm with a dollop of whipped cream.",
+        "cookingTime": "45 minutes",
+        "country": "Denmark",
+        "pictureUrl": "https://example.com/aeblekage.jpg"
+      }, {
+        "name": "Pad Thai",
+        "ingredients": [
+          "200g rice noodles",
+          "2 tablespoons vegetable oil",
+          "2 cloves garlic, minced",
+          "200g tofu, cubed",
+          "2 eggs, lightly beaten",
+          "200g shrimp, peeled and deveined",
+          "1 cup bean sprouts",
+          "2 green onions, chopped",
+          "1/4 cup crushed peanuts",
+          "Lime wedges for serving",
+          "Fresh cilantro for garnish"
+        ],
+        "method": "1. Soak rice noodles in warm water until softened. Drain and set aside.\n2. Heat oil in a wok. Add minced garlic and cubed tofu, stir-fry until tofu is golden.\n3. Push tofu to the side, pour beaten eggs into the wok, scramble, and mix with tofu.\n4. Add shrimp and stir-fry until pink. Add soaked rice noodles.\n5. Toss in bean sprouts, green onions, and crushed peanuts. Mix well.\n6. Serve hot, garnished with lime wedges and fresh cilantro.",
+        "cookingTime": "20 minutes",
+        "country": "Thailand",
+        "pictureUrl": "https://example.com/pad_thai.jpg"
+      }, {
+        "name": "Chelo Kebab",
+        "ingredients": [
+          "500g ground beef or lamb",
+          "1 onion, grated",
+          "1 teaspoon turmeric",
+          "Salt and pepper to taste",
+          "Basmati rice",
+          "Butter or ghee",
+          "Tomatoes, sliced",
+          "Sumac for garnish",
+          "Fresh herbs (mint, parsley) for garnish",
+          "Lavash or flatbread"
+        ],
+        "method": "1. Mix ground meat with grated onion, turmeric, salt, and pepper.\n2. Form the meat mixture into kebabs or skewers.\n3. Grill the kebabs until fully cooked.\n4. Cook basmati rice and toss with butter or ghee.\n5. Serve the kebabs over the rice, garnished with sliced tomatoes, sumac, and fresh herbs.\n6. Accompany with lavash or flatbread.",
+        "cookingTime": "30 minutes",
+        "country": "Iran",
+        "pictureUrl": "https://example.com/chelo_kebab.jpg"
+      }, {
+        "name": "Ghormeh Sabzi",
+        "ingredients": [
+          "1 cup dried fenugreek leaves (kasuri methi)",
+          "1 cup parsley, chopped",
+          "1 cup cilantro, chopped",
+          "1/2 cup chives or green onions, chopped",
+          "500g beef or lamb stew meat, cubed",
+          "1 onion, chopped",
+          "2 cloves garlic, minced",
+          "1 can red kidney beans, drained",
+          "1 tablespoon dried lime powder (limoo amani)",
+          "Turmeric, salt, and pepper to taste",
+          "Cooked basmati rice for serving"
+        ],
+        "method": "1. Sauté chopped onions and garlic until golden. Add meat and brown.\n2. Add turmeric, salt, and pepper. Stir in dried fenugreek, parsley, cilantro, and chives.\n3. Pour in enough water to cover the ingredients. Add dried lime powder.\n4. Simmer until meat is tender. Add kidney beans and cook until heated through.\n5. Serve over basmati rice.",
+        "cookingTime": "2 hours",
+        "country": "Iran",
+        "pictureUrl": "https://example.com/ghormeh_sabzi.jpg"
+      },
+      {
+        "name": "Zereshk Polo Ba Morgh",
+        "ingredients": [
+          "2 cups basmati rice",
+          "1 cup barberries (zereshk), washed and drained",
+          "500g chicken, cut into pieces",
+          "1 onion, thinly sliced",
+          "1/2 teaspoon saffron threads, dissolved in hot water",
+          "1/4 cup slivered almonds, toasted",
+          "1/4 cup pistachios, chopped",
+          "Butter or ghee",
+          "Salt and sugar to taste"
+        ],
+        "method": "1. Cook basmati rice until partially done. Drain.\n2. In a pan, sauté sliced onions until golden. Add chicken pieces and cook until browned.\n3. Layer partially cooked rice with barberries and saffron water.\n4. Top with chicken, almonds, and pistachios. Dot with butter or ghee.\n5. Sprinkle salt and sugar between the layers.\n6. Cover and cook until the rice is fully cooked and fluffy.",
+        "cookingTime": "45 minutes",
+        "country": "Iran",
+        "pictureUrl": "https://example.com/zereshk_polo_ba_morgh.jpg"
+      }, {
+        "name": "Kashk-e Bademjan",
+        "ingredients": [
+          "2 large eggplants",
+          "1 cup Kashk (whey), diluted with water",
+          "3 cloves garlic, minced",
+          "1/2 cup walnuts, chopped",
+          "1 tablespoon dried mint",
+          "2 tablespoons olive oil",
+          "Salt and pepper to taste",
+          "Pita bread or flatbread for serving"
+        ],
+        "method": "1. Roast or grill eggplants until the skin is charred and the flesh is soft.\n2. Peel the eggplants and mash the flesh.\n3. Sauté minced garlic in olive oil until fragrant. Add mashed eggplants and cook briefly.\n4. Stir in Kashk, chopped walnuts, and dried mint. Cook until well combined.\n5. Season with salt and pepper to taste.\n6. Serve at room temperature with pita bread or flatbread.",
+        "cookingTime": "45 minutes",
+        "country": "Iran",
+        "pictureUrl": "https://example.com/kashk_e_bademjan.jpg"
+      },{
+        "name": "Gheimeh",
+        "ingredients": [
+          "500g lamb or beef stew meat, cubed",
+          "1 cup yellow split peas, washed",
+          "2 large onions, chopped",
+          "2 tomatoes, peeled and chopped",
+          "2 tablespoons tomato paste",
+          "1/2 cup dried lime powder (limoo amani)",
+          "1 teaspoon ground turmeric",
+          "1 teaspoon ground cinnamon",
+          "1/2 teaspoon ground saffron, dissolved in hot water",
+          "Vegetable oil",
+          "Salt and pepper to taste",
+          "French fries for garnish",
+          "Cooked basmati rice for serving"
+        ],
+        "method": "1. Sauté chopped onions in vegetable oil until golden brown.\n2. Add meat, turmeric, salt, and pepper. Brown the meat on all sides.\n3. Stir in chopped tomatoes, tomato paste, and dried lime powder.\n4. Add washed split peas and enough water to cover the ingredients. Simmer until meat and peas are tender.\n5. Add ground cinnamon and saffron water. Adjust seasoning if needed.\n6. Fry French fries until golden and use them as a garnish.\n7. Serve over basmati rice.",
+        "cookingTime": "2 hours",
+        "country": "Iran",
+        "pictureUrl": "https://example.com/gheimeh.jpg"
+      }
+    ]
+  }
+  
