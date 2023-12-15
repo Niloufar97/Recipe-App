@@ -59,8 +59,8 @@ fetch("./recipes.json")
             <div class="food-img-container">
                 <img src=${recipe.pictureUrl}>
             </div>
-            <h1>${recipe.name}</h1>
-            <button>Read More</button>
+            <h1 class="food-name">${recipe.name}</h1>
+            <button class="read-more-btn">Read More</button>
             `;
         recipesContainer.appendChild(recipeCard)
     });
