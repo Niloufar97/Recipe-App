@@ -34,6 +34,7 @@ body{
     width: 8rem;
     background-color: #F2796C;
     color: #fff;
+    cursor: pointer;
 }
 .header-bar{
     position: fixed;
@@ -166,6 +167,7 @@ main .main-title{
     border: 1px groove #ed7568;
     border-radius: 1rem;
     color: #fff;
+    cursor: pointer;
 }
 /* media queries--------------------------------- */
 @media screen and (max-width: 750px) {
