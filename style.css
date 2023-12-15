@@ -6,3 +6,119 @@
 body{
     
 }
+.primary-nav{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.primary-nav .logo , .offcanvas-title{
+    color: #F2796C;
+}
+.primary-nav form button , .primary-nav form input , .offcanvas-body form button ,.offcanvas-body form input{
+    border-radius: 1rem; 
+    border: 1px groove #F2796C;
+    padding: 0.5rem;
+}
+.primary-nav form input{
+    width: 15rem;
+    
+}
+.primary-nav form button ,.offcanvas-body form button {
+    width: 8rem;
+    background-color: #F2796C;
+    color: #fff;
+}
+.header-bar{
+    width: 100%;
+    height: 1.5rem;
+    background-color: #183354;
+}
+header .secondary-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header .secondary-nav ul{
+    display: flex;
+    list-style: none;
+    gap: 4rem;
+    margin: 1rem auto;
+}
+header .secondary-nav ul li{
+    font-size: larger;
+    cursor: pointer;
+}
+header .secondary-nav ul li:hover{
+    color: #F2796C;
+}
+/* offcanvos styles----------------------- */
+#offcanvas {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    transition: right 0.5s ease;
+    display: flex;
+    flex-direction: column;
+}
+#openOffcanvas{
+    display: none;
+}
+#openOffcanvas ,#closeOffcanvas{
+    background-color: #fff;
+    border: none;
+}
+#openOffcanvas img, #closeOffcanvas img{
+    width: 2rem;
+    height: 2rem;
+}
+#offcanvas .offcanvas-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+}
+.offcanvas-body{
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: baseline;
+   margin:rem;
+}
+.offcanvas-body form{
+    margin-top: 2rem;
+}
+.offcanvas-body ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 4rem;
+    gap: 2rem;
+}
+.offcanvas-body ul li{
+    font-size: larger;
+    cursor: pointer;
+}
+.offcanvas-body ul li:hover{
+    color: #F2796C;
+    
+}
+/* media queries--------------------------------- */
+@media screen and (max-width: 750px) {
+    .header-form{
+        display: none;
+    }
+    header .secondary-nav{
+        display: none;
+    }
+    #openOffcanvas{
+        display: inline-block;
+    }
+    #offcanvas {
+        width: 100%;
+    }
+}

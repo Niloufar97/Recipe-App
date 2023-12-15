@@ -8,7 +8,48 @@
 </head>
 <body>
     <header>
-       <h2 class="logo">Yammy</h2>
+       <nav>
+        <div class="primary-nav">
+            <h1 class="logo">Yummmy Food</h1>
+            <form class="header-form">
+                <input type="text" placeholder="search...">
+                <button type="button">Search</button>
+            </form>
+            <button id="openOffcanvas"><img src="./assets/images/list.svg"></button>
+        </div>
+        <div class="header-bar"></div>
+        <div class="secondary-nav">
+            <ul>
+                <li>All Recipes</li>
+                <li>Chicken</li>
+                <li>Meat</li>
+                <li>Sea Food</li>
+                <li>Vegetarian</li>
+                <li>Country</li>
+            </ul>
+        </div>
+       </nav>
+       <div id="offcanvas">
+        <div class="offcanvas-header">
+            <h2 class="offcanvas-title">Yummy food</h2>
+            <button id="closeOffcanvas"><img src="./assets/images/x.svg"></button>
+        </div>
+        <div class="offcanvas-body">
+            <form>
+                <input type="text" placeholder="search...">
+                <button type="button">Search</button>
+            </form>
+            <ul>
+                <li>All Recipes</li>
+                <li>Chicken</li>
+                <li>Meat</li>
+                <li>Sea Food</li>
+                <li>Vegetarian</li>
+                <li>Country</li>
+            </ul>
+        </div>
+       </div>
+     
     </header>
     <script src="main.js"></script>
 </body>
