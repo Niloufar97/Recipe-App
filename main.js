@@ -12,7 +12,39 @@ document.addEventListener("DOMContentLoaded", function () {
     offcanvas.style.right = "-100%";
   });
 });
-// render recipes
+// smooth animation for header
+const primaryNav = document.querySelector('.primary-nav');
+const headerBar = document.querySelector('.header-bar');
+const logo = document.querySelector('.logo');
+let lastScrollPosition = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScrollPosition = window.scrollY;
+
+  if (currentScrollPosition > 0) {
+    // Scrolling down
+    primaryNav.style.transition = 'height 0.3s';
+    headerBar.style.transition = 'height 0.3s';
+    logo.style.transition = 'font-size 0.3s';
+    primaryNav.style.height = '10vh';
+    headerBar.style.height = '0.5rem';
+    headerBar.style.top = '10vh';
+    logo.style.fontSize = '1.5rem';
+  } else {
+    // Scrolling up
+    primaryNav.style.transition = 'height 0.3s';
+    headerBar.style.transition = 'height 0.3s';
+    logo.style.transition = 'font-size 0.3s';
+    primaryNav.style.height = '13vh';
+    headerBar.style.height = '2rem';
+    headerBar.style.top = '13vh';
+    logo.style.fontSize = '2rem';
+  }
+
+  lastScrollPosition = currentScrollPosition;
+});
+
+
 // render recipes
 const recipesContainer = document.getElementById("recipes-container");
 
