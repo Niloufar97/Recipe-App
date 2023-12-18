@@ -2,9 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const openOffcanvasButton = document.getElementById("openOffcanvas");
   const offcanvas = document.getElementById("offcanvas");
   // popup--------------------------------------------------------------
-  const popupContainer = document.getElementById("popup-container");
-  const popupContent = document.getElementById("popupcontent");
-  const popupTitle = document.querySelector("popup-title");
+  const popupTitle = document.querySelector(".popup-title");
+  const popupImage = document.querySelector('.popup-image');
+  const popupIngredientsUl = document.querySelector('.popup-ingredients-ul');
+  const popupRecipeMethod = document.querySelector('.recipe-method');
+  const cookingTime = document.querySelector('.cookingtime');
+  const country = document.querySelector('.country');
 
   // offcanvos------------------------------------------------------------
   openOffcanvasButton.addEventListener("click", function () {
@@ -68,8 +71,25 @@ document.addEventListener("DOMContentLoaded", function () {
           <h1 class="food-name">${recipe.name}</h1>
           <button class="read-more-btn">Read More</button>
           `;
-          recipesContainer.appendChild(recipeCard)
+          recipesContainer.appendChild(recipeCard);
+          const openPopupButton = recipeCard.querySelector('.read-more-btn')
+          openPopupButton.addEventListener('click' , ()=>{
+            openPopup(recipe)
+          })
         });
       }
+      // popup ----------------------------------------------------
+      function openPopup(recipe){
+        popupTitle.textContent = recipe.name;
+        popupImage.src = recipe.pictureUrl;
+        recipe.ingredients.forEach(ingredient => {
+          const popupIngrenientsLi = document.createElement('li');
+          popupIngrenientsLi.innerText = ingredient;
+          popupIngredientsUl.appendChild(popupIngrenientsLi);
+          popupRecipeMethod.textContent = recipe.method;
+          cookingTime.textContent = recipe.cookingTime;
+          country.textContent = recipe.country;
+        })
+      }   
     });
 });

@@ -170,6 +170,70 @@ main .main-title{
     color: #fff;
     cursor: pointer;
 }
+/* popup------------------------------------------- */
+#popup-container{
+    width: 800px;
+    max-width: 80%;
+    border: 1px solid #183354;
+    border-radius: 1rem;
+    padding: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50% ,-50%);
+    
+}
+#popupcontent{
+    display: flex;
+    flex-direction: column;
+}
+.popup-header{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #183354;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+.popup-header .popup-close-btn {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+.popup-body{
+    display: flex;
+    flex-direction: column;
+}
+.popup-body .image-and-ingredients{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem;
+    gap: 2rem;
+}
+.image-and-ingredients .popup-img-container{
+    width: 40%;
+    height: 40%;
+
+}
+.image-and-ingredients .popup-img-container img{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+.recipe-details .popup-ingredients-ul{
+    list-style: none;
+    margin: 1.5rem;
+}
+.recipe-details .more-details{
+    display: flex;
+    gap: 3rem;
+}
+.Cooking-time-container,.country-container{
+    display: flex;
+    gap: 0.3rem;
+}
+.popup-body .method{
+    margin: 1rem 2rem;
+}
 /* media queries--------------------------------- */
 @media screen and (max-width: 750px) {
     .header-form{
