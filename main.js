@@ -2,12 +2,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const openOffcanvasButton = document.getElementById("openOffcanvas");
   const offcanvas = document.getElementById("offcanvas");
   // popup--------------------------------------------------------------
+  const popupContainer = document.getElementById('popup-container')
   const popupTitle = document.querySelector(".popup-title");
   const popupImage = document.querySelector('.popup-image');
   const popupIngredientsUl = document.querySelector('.popup-ingredients-ul');
   const popupRecipeMethod = document.querySelector('.recipe-method');
   const cookingTime = document.querySelector('.cookingtime');
   const country = document.querySelector('.country');
+  const closePopupBtn = document.querySelector('.popup-close-btn')
+  const overlay = document.getElementById('overlay')
 
   // offcanvos------------------------------------------------------------
   openOffcanvasButton.addEventListener("click", function () {
@@ -74,12 +77,15 @@ document.addEventListener("DOMContentLoaded", function () {
           recipesContainer.appendChild(recipeCard);
           const openPopupButton = recipeCard.querySelector('.read-more-btn')
           openPopupButton.addEventListener('click' , ()=>{
+            overlay.style.display = "block"
             openPopup(recipe)
           })
         });
       }
       // popup ----------------------------------------------------
       function openPopup(recipe){
+        popupIngredientsUl.textContent = ""
+        popupContainer.style.display = "block"
         popupTitle.textContent = recipe.name;
         popupImage.src = recipe.pictureUrl;
         recipe.ingredients.forEach(ingredient => {
@@ -88,8 +94,12 @@ document.addEventListener("DOMContentLoaded", function () {
           popupIngredientsUl.appendChild(popupIngrenientsLi);
           popupRecipeMethod.textContent = recipe.method;
           cookingTime.textContent = recipe.cookingTime;
-          country.textContent = recipe.country;
+          country.textContent = recipe.country; 
         })
       }   
+      closePopupBtn.addEventListener('click' , ()=>{
+        popupContainer.style.display = "none"
+        overlay.style.display = "none"
+      })
     });
 });
