@@ -1,6 +1,29 @@
 {
     "recipes": [
       {
+        "name": "Paneer Butter Masala",
+        "ingredients": [
+          "250g paneer, cubed",
+          "1 cup tomato puree",
+          "1 onion, finely chopped",
+          "2 cloves garlic, minced",
+          "1/2 cup cashews, soaked",
+          "1/4 cup cream",
+          "1 tsp garam masala",
+          "1 tsp cumin powder",
+          "1 tsp coriander powder",
+          "1/2 tsp turmeric",
+          "Salt to taste",
+          "2 tbsp butter",
+          "Fresh coriander leaves for garnish"
+        ],
+        "method": "1. Sauté onions and garlic in butter until golden brown.\n2. Add tomato puree, cashews, and spices. Cook until the oil separates.\n3. Blend the mixture into a smooth paste. Return it to the pan.\n4. Add paneer cubes and cream. Simmer until the paneer is heated through.\n5. Garnish with fresh coriander leaves and serve with naan or rice.",
+        "cookingTime": "30 minutes",
+        "country": "India",
+        "type" : "vegetarian",
+        "pictureUrl": "https://healthynibblesandbits.com/wp-content/uploads/2019/07/Paneer-Tikka-Masala-FF3.jpg"
+      },
+      {
         "name": "Spaghetti Bolognese",
         "ingredients": [
           "500g ground beef",
@@ -68,28 +91,6 @@
         "country": "Italy",
         "type" : "meat",
         "pictureUrl": "https://opskrifteradmin.coop.dk/media/recipeimages/1145/24246/1920/ossobuco-ig-feed-1080x1920.jpg?width=850&height=850&mode=crop&format=webp&quality=90&center=0.5%2C0.5&upscale=false"
-      },{
-        "name": "Paneer Butter Masala",
-        "ingredients": [
-          "250g paneer, cubed",
-          "1 cup tomato puree",
-          "1 onion, finely chopped",
-          "2 cloves garlic, minced",
-          "1/2 cup cashews, soaked",
-          "1/4 cup cream",
-          "1 tsp garam masala",
-          "1 tsp cumin powder",
-          "1 tsp coriander powder",
-          "1/2 tsp turmeric",
-          "Salt to taste",
-          "2 tbsp butter",
-          "Fresh coriander leaves for garnish"
-        ],
-        "method": "1. Sauté onions and garlic in butter until golden brown.\n2. Add tomato puree, cashews, and spices. Cook until the oil separates.\n3. Blend the mixture into a smooth paste. Return it to the pan.\n4. Add paneer cubes and cream. Simmer until the paneer is heated through.\n5. Garnish with fresh coriander leaves and serve with naan or rice.",
-        "cookingTime": "30 minutes",
-        "country": "India",
-        "type" : "vegetarian",
-        "pictureUrl": "https://healthynibblesandbits.com/wp-content/uploads/2019/07/Paneer-Tikka-Masala-FF3.jpg"
       }, {
         "name": "Aloo Gobi",
         "ingredients": [
