@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  const recipesContainer = document.getElementById("recipes-container");
+
+  // offcanvas---------------------------------------------------------
+
   const openOffcanvasButton = document.getElementById("openOffcanvas");
   const offcanvas = document.getElementById("offcanvas");
+
   // popup--------------------------------------------------------------
+
   const popupContainer = document.getElementById('popup-container')
   const popupTitle = document.querySelector(".popup-title");
   const popupImage = document.querySelector('.popup-image');
@@ -12,7 +19,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const closePopupBtn = document.querySelector('.popup-close-btn')
   const overlay = document.getElementById('overlay')
 
+  // filters-----------------------------------------------------------------
+
+  const allRecipes = document.querySelector('.all-recipes');
+  const chickenRecipes = document.querySelector('.chicken-recipes');
+  const meatRecipes = document.querySelector('.meat-recipes');
+  const seafoodRecipes = document.querySelector('.seafood-recipes');
+  const vegetarianRecipes = document.querySelector('.vegetarian-recipes');
+
   // offcanvos------------------------------------------------------------
+
   openOffcanvasButton.addEventListener("click", function () {
     offcanvas.style.right = offcanvas.style.right === "0" ? "-100%" : "0";
   });
@@ -23,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // smooth animation for header-------------------------------------------------
+
   const primaryNav = document.querySelector(".primary-nav");
   const headerBar = document.querySelector(".header-bar");
   const logo = document.querySelector(".logo");
@@ -54,17 +71,18 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollPosition = currentScrollPosition;
   });
 
-  const recipesContainer = document.getElementById("recipes-container");
+
 
   fetch("./recipes.json")
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
-      renderRecipes()
+      renderRecipes(recipes)
 
       // render function----------------------------------------------
-      function renderRecipes() {
-        recipes.map((recipe) => {
+
+      function renderRecipes(recipesToRender) {
+        recipesToRender.map((recipe) => {
           const recipeCard = document.createElement("div");
           recipeCard.classList.add("recipe-card");
           recipeCard.innerHTML = `
@@ -82,7 +100,42 @@ document.addEventListener("DOMContentLoaded", function () {
           })
         });
       }
-      // popup ----------------------------------------------------
+      // FILTERS----------------------------------------------------
+      // ALL
+      allRecipes.addEventListener('click', () => {
+        recipesContainer.textContent = ""
+        renderRecipes(recipes);
+      });
+
+      // CHICKEN
+      chickenRecipes.addEventListener('click', ()=>{
+        recipesContainer.textContent = ""
+        const chicken = recipes.filter(recipe => recipe.type === 'chicken');
+        renderRecipes(chicken);
+      });
+
+      // MEAT
+      meatRecipes.addEventListener('click' , () => {
+        recipesContainer.textContent = ""
+        const meat = recipes.filter(recipe => recipe.type === 'meat');
+        renderRecipes(meat);
+      });
+
+      // SEAFOOD
+      seafoodRecipes.addEventListener('click' , () => {
+        recipesContainer.textContent = ""
+        const seafood = recipes.filter(recipe => recipe.type === 'seafood');
+        renderRecipes(seafood);
+      });
+
+      // VEGETARIAN
+      vegetarianRecipes.addEventListener('click' , () => {
+        recipesContainer.textContent = ""
+        const vegetarian = recipes.filter(recipe => recipe.type === 'vegetarian');
+        renderRecipes(vegetarian);
+      });
+
+      // POPUP ----------------------------------------------------
       function openPopup(recipe){
         popupIngredientsUl.textContent = ""
         popupContainer.style.display = "block"
