@@ -7,7 +7,7 @@
     <title>Recipe App</title>
 </head>
 <body>
-    <div id="overlay"></div>
+    
     <header> 
        <nav>
         <div class="primary-nav">
@@ -94,6 +94,22 @@
                 </div>
             </div>
         </div>
+        <div id="overlay"></div>
+        <hr>
+        <!-- ADD RECIPE FORM -->
+        <section id="add-new-recipe">
+            <h2>Add A New Recipe</h2>
+            <form action="#">
+                <label for="food-name">Name:</label>
+                <input type="text" id="food-name" placeholder="Name of your food...">
+                <label for="add-food-country">Country:</label>
+                <input type="text" id="add-food-country">
+                <button type="button" class="add-ingredient-button">Add Ingredients</button>
+                <div id="ingredients-container"></div>
+                <label for="add-recipe-method"></label>
+            </form>
+        </section>
+
     </main>
     <script src="main.js"></script>
 </body>
