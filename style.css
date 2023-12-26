@@ -131,7 +131,7 @@ main .main-title{
 /* recipes---------------------------------------- */
 #recipes-container{
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 5rem;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -247,6 +247,36 @@ main .main-title{
 }
 .popup-body .method{
     margin: 1rem 2rem;
+}
+
+/* Add new recipe form----------------------------------- */
+#add-new-recipe{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+#add-new-recipe form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px groove #183354;
+    border-radius: 1rem;
+    padding: 2rem;
+}
+#add-new-recipe form input{
+    padding: 0.2rem;
+}
+.add-ingredient-button , .add-recipe-button{
+    background-color:#ed7568;
+    border: none;
+    color: #fff;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 5rem;
+    cursor: pointer;
 }
 /* media queries--------------------------------- */
 @media screen and (max-width: 750px) {
