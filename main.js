@@ -24,8 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const addIngredientsButton = document.querySelector('.add-ingredient-button');
   const ingredientsContainer = document.getElementById('ingredients-container');
   const ingredientInputs = document.querySelectorAll('.ingredient');
+  const newFoodName = document.getElementById('food-name');
+  const newFoodCountry = document.getElementById('add-food-country');
+  const newRecipeMethod = document.getElementById('add-recipe-method');
+  const addRecipeButton = document.querySelector('.add-recipe-button');
  
   // add new recipe functionality---------------------------------------------
+
   // ADD Ingredients
   let ingredients = [];
 
@@ -45,6 +50,24 @@ document.addEventListener("DOMContentLoaded", function () {
       ingredients.push(ingredientInput.value)
       console.log(ingredients);
     })
+  })
+
+  // show new recipe in recipe container
+
+  addRecipeButton.addEventListener('click' , () => {
+    const newRecipeContainer = document.createElement('div');
+    newRecipeContainer.classList.add('recipe-card');
+
+    const foodName = newFoodName.value;
+    const foodCountry = newFoodCountry.value;
+    const foodMethod = newRecipeMethod.value;
+    newRecipeContainer.innerHTML = `
+      <h2>${foodName}</h2>
+      <h3>country: ${foodCountry}</h3>
+      <p>Ingredients: ${ingredients} </p>
+      <p>Method : ${foodMethod}</p>
+    `
+    recipesContainer.appendChild(newRecipeContainer)
   })
 
 
@@ -117,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="food-img-container">
               <img src=${recipe.pictureUrl}>
           </div>
-          <h1 class="food-name">${recipe.name}</h1>
+          <h2 class="food-name">${recipe.name}</h2>
           <button class="read-more-btn">Read More</button>
           `;
           recipesContainer.appendChild(recipeCard);
