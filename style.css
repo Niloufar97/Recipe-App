@@ -251,12 +251,12 @@ main .main-title{
 
 /* Add new recipe form----------------------------------- */
 #add-new-recipe{
-    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin-top: 3rem;
 }
 #add-new-recipe form{
     display: flex;
@@ -277,6 +277,11 @@ main .main-title{
     margin-top: 1rem;
     border-radius: 5rem;
     cursor: pointer;
+}
+#ingredients-container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 /* media queries--------------------------------- */
 @media screen and (max-width: 750px) {

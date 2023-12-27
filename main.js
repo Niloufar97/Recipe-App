@@ -19,6 +19,35 @@ document.addEventListener("DOMContentLoaded", function () {
   const closePopupBtn = document.querySelector('.popup-close-btn')
   const overlay = document.getElementById('overlay')
 
+  // add new recipe-----------------------------------------------------
+
+  const addIngredientsButton = document.querySelector('.add-ingredient-button');
+  const ingredientsContainer = document.getElementById('ingredients-container');
+  const ingredientInputs = document.querySelectorAll('.ingredient');
+ 
+  // add new recipe functionality---------------------------------------------
+  // ADD Ingredients
+  let ingredients = [];
+
+  addIngredientsButton.addEventListener('click' , () => {
+    const ingredientInput = document.createElement('input');
+    ingredientInput.type = 'text';
+    ingredientInput.classList.add('newIngredient')
+    ingredientsContainer.appendChild(ingredientInput);
+    ingredientInput.addEventListener('change' , () => {
+      ingredients.push(ingredientInput.value);
+      console.log(ingredients);
+    })
+  })
+  
+  ingredientInputs.forEach((ingredientInput) => {
+    ingredientInput.addEventListener('change' , () => {
+      ingredients.push(ingredientInput.value)
+      console.log(ingredients);
+    })
+  })
+
+
   // filters-----------------------------------------------------------------
 
   const allRecipes = document.querySelector('.all-recipes');
@@ -43,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const primaryNav = document.querySelector(".primary-nav");
   const headerBar = document.querySelector(".header-bar");
   const logo = document.querySelector(".logo");
-  let lastScrollPosition = 0;
 
   window.addEventListener("scroll", () => {
     const currentScrollPosition = window.scrollY;
