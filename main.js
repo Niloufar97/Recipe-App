@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const newRecipeMethod = document.getElementById("add-recipe-method");
   const addRecipeButton = document.querySelector(".add-recipe-button");
   const newFoodImg = document.getElementById("add-food-img");
+  const newCookingTime = document.getElementById('add-cooking-time')
 
   // filters-----------------------------------------------------------------
 
@@ -125,10 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
   addRecipeButton.addEventListener("click", () => {
     const newRecipeContainer = document.createElement("div");
     newRecipeContainer.classList.add("recipe-card");
-
-    const foodName = newFoodName.value;
-    const foodCountry = newFoodCountry.value;
-    const foodMethod = newRecipeMethod.value;
     let foodImage = newFoodImg.value;
     if (!foodImage) {
       foodImage =
@@ -136,18 +133,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const newRecipe = {
-      name: foodName,
-      country: foodCountry,
+      name: newFoodName.value,
+      country: newFoodCountry.value,
       ingredients: ingredients,
-      method: foodMethod,
+      method: newRecipeMethod.value,
       pictureUrl: foodImage,
+      cookingTime: newCookingTime.value,
       type: "",
     };
+    
     newRecipeContainer.innerHTML = `
     <div class="food-img-container">
-      <img src=${foodImage}>
+      <img src=${newRecipe.pictureUrl}>
     </div>
-    <h2 class="food-name">${foodName}</h2>
+    <h2 class="food-name">${newRecipe.name}</h2>
     <button class="read-more-btn">Read More</button>
     `;
     recipesContainer.appendChild(newRecipeContainer);
