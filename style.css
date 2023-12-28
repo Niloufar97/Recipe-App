@@ -63,7 +63,11 @@ header .secondary-nav ul li{
     font-size: larger;
     cursor: pointer;
 }
-header .secondary-nav ul li:hover{
+header .secondary-nav ul li a{
+    text-decoration: none;
+    color: black;
+}
+header .secondary-nav ul li:hover , header .secondary-nav ul li a:hover{
     color: #F2796C;
 }
 /* offcanvos styles----------------------- */
