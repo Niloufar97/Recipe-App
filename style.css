@@ -293,7 +293,7 @@ input[type=text] {
     color: #fff;
     padding: 0.5rem;
     margin-top: 1rem;
-    border-radius: 5rem;
+    border-radius: 1rem;
     cursor: pointer;
 }
 .add-ingredient-button{
@@ -307,7 +307,7 @@ input[type=text] {
     gap: 0.5rem;
 }
 /* media queries--------------------------------- */
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 576px) {
     .header-form{
         display: none;
     }
@@ -321,6 +321,54 @@ input[type=text] {
         width: 100%;
     }
     .recipe-card{
-        width: 40%;
+        width: 100%;
+        margin: 0.5rem 5rem;
+    }
+    #add-new-recipe-form{
+        width: 100%;
+    }
+    input[type=text]{
+        width: fit-content;
+    }
+    #add-new-recipe-form button{
+        width: 10rem;
+    }
+    .general-inputs{
+        flex-direction: column;
+    }
+    .ingredients-inputs{
+        flex-direction: column;
+    }
+}
+@media screen and (min-width: 576px) and (max-width : 768px){
+    .header-form{
+        display: none;
+    }
+    header .secondary-nav{
+        display: none;
+    }
+    #openOffcanvas{
+        display: inline-block;
+    }
+    #offcanvas {
+        width: 100%;
+    }
+    .recipe-card{
+        width: 45%;
+    }
+    #add-new-recipe-form{
+        width: 100%;
+    }
+    input[type=text]{
+        width: fit-content;
+    }
+    #add-new-recipe-form button{
+        width: 10rem;
+    }
+    .general-inputs{
+        flex-direction: column;
+    }
+    .ingredients-inputs{
+        flex-direction: column;
     }
 }
