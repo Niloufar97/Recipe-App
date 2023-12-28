@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   const recipesContainer = document.getElementById("recipes-container");
 
   // offcanvas---------------------------------------------------------
@@ -9,75 +8,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // popup--------------------------------------------------------------
 
-  const popupContainer = document.getElementById('popup-container')
+  const popupContainer = document.getElementById("popup-container");
   const popupTitle = document.querySelector(".popup-title");
-  const popupImage = document.querySelector('.popup-image');
-  const popupIngredientsUl = document.querySelector('.popup-ingredients-ul');
-  const popupRecipeMethod = document.querySelector('.recipe-method');
-  const cookingTime = document.querySelector('.cookingtime');
-  const country = document.querySelector('.country');
-  const closePopupBtn = document.querySelector('.popup-close-btn')
-  const overlay = document.getElementById('overlay')
+  const popupImage = document.querySelector(".popup-image");
+  const popupIngredientsUl = document.querySelector(".popup-ingredients-ul");
+  const popupRecipeMethod = document.querySelector(".recipe-method");
+  const cookingTime = document.querySelector(".cookingtime");
+  const country = document.querySelector(".country");
+  const closePopupBtn = document.querySelector(".popup-close-btn");
+  const overlay = document.getElementById("overlay");
 
   // add new recipe-----------------------------------------------------
 
-  const addIngredientsButton = document.querySelector('.add-ingredient-button');
-  const ingredientsContainer = document.getElementById('ingredients-container');
-  const ingredientInputs = document.querySelectorAll('.ingredient');
-  const newFoodName = document.getElementById('food-name');
-  const newFoodCountry = document.getElementById('add-food-country');
-  const newRecipeMethod = document.getElementById('add-recipe-method');
-  const addRecipeButton = document.querySelector('.add-recipe-button');
- 
-  // add new recipe functionality---------------------------------------------
-
-  // ADD Ingredients
-  let ingredients = [];
-
-  addIngredientsButton.addEventListener('click' , () => {
-    const ingredientInput = document.createElement('input');
-    ingredientInput.type = 'text';
-    ingredientInput.classList.add('newIngredient')
-    ingredientsContainer.appendChild(ingredientInput);
-    ingredientInput.addEventListener('change' , () => {
-      ingredients.push(ingredientInput.value);
-      console.log(ingredients);
-    })
-  })
-  
-  ingredientInputs.forEach((ingredientInput) => {
-    ingredientInput.addEventListener('change' , () => {
-      ingredients.push(ingredientInput.value)
-      console.log(ingredients);
-    })
-  })
-
-  // show new recipe in recipe container
-
-  addRecipeButton.addEventListener('click' , () => {
-    const newRecipeContainer = document.createElement('div');
-    newRecipeContainer.classList.add('recipe-card');
-
-    const foodName = newFoodName.value;
-    const foodCountry = newFoodCountry.value;
-    const foodMethod = newRecipeMethod.value;
-    newRecipeContainer.innerHTML = `
-      <h2>${foodName}</h2>
-      <h3>country: ${foodCountry}</h3>
-      <p>Ingredients: ${ingredients} </p>
-      <p>Method : ${foodMethod}</p>
-    `
-    recipesContainer.appendChild(newRecipeContainer)
-  })
-
+  const addIngredientsButton = document.querySelector(".add-ingredient-button");
+  const ingredientsContainer = document.getElementById("ingredients-container");
+  const ingredientInputs = document.querySelectorAll(".ingredient");
+  const newFoodName = document.getElementById("food-name");
+  const newFoodCountry = document.getElementById("add-food-country");
+  const newRecipeMethod = document.getElementById("add-recipe-method");
+  const addRecipeButton = document.querySelector(".add-recipe-button");
+  const newFoodImg = document.getElementById("add-food-img");
 
   // filters-----------------------------------------------------------------
 
-  const allRecipes = document.querySelector('.all-recipes');
-  const chickenRecipes = document.querySelector('.chicken-recipes');
-  const meatRecipes = document.querySelector('.meat-recipes');
-  const seafoodRecipes = document.querySelector('.seafood-recipes');
-  const vegetarianRecipes = document.querySelector('.vegetarian-recipes');
+  const allRecipes = document.querySelector(".all-recipes");
+  const chickenRecipes = document.querySelector(".chicken-recipes");
+  const meatRecipes = document.querySelector(".meat-recipes");
+  const seafoodRecipes = document.querySelector(".seafood-recipes");
+  const vegetarianRecipes = document.querySelector(".vegetarian-recipes");
 
   // offcanvos------------------------------------------------------------
 
@@ -122,13 +80,89 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollPosition = currentScrollPosition;
   });
 
+  // OPEN POPUP ----------------------------------------------------
+  function openPopup(recipe) {
+    popupIngredientsUl.textContent = "";
+    popupContainer.style.display = "block";
+    popupTitle.textContent = recipe.name;
+    popupImage.src = recipe.pictureUrl;
+    recipe.ingredients.forEach((ingredient) => {
+      const popupIngrenientsLi = document.createElement("li");
+      popupIngrenientsLi.innerText = ingredient;
+      popupIngredientsUl.appendChild(popupIngrenientsLi);
+      popupRecipeMethod.textContent = recipe.method;
+      cookingTime.textContent = recipe.cookingTime;
+      country.textContent = recipe.country;
+    });
+  }
+  closePopupBtn.addEventListener("click", () => {
+    popupContainer.style.display = "none";
+    overlay.style.display = "none";
+  });
 
+  // add new recip functionality---------------------------------------------
+  // ADD Ingredients
+  let ingredients = [];
+
+  addIngredientsButton.addEventListener("click", () => {
+    const ingredientInput = document.createElement("input");
+    ingredientInput.type = "text";
+    ingredientInput.classList.add("newIngredient");
+    ingredientsContainer.appendChild(ingredientInput);
+    ingredientInput.addEventListener("change", () => {
+      ingredients.push(ingredientInput.value);
+    });
+  });
+
+  ingredientInputs.forEach((ingredientInput) => {
+    ingredientInput.addEventListener("change", () => {
+      ingredients.push(ingredientInput.value);
+    });
+  });
+
+  // show new recipe in recipe container
+
+  addRecipeButton.addEventListener("click", () => {
+    const newRecipeContainer = document.createElement("div");
+    newRecipeContainer.classList.add("recipe-card");
+
+    const foodName = newFoodName.value;
+    const foodCountry = newFoodCountry.value;
+    const foodMethod = newRecipeMethod.value;
+    let foodImage = newFoodImg.value;
+    if (!foodImage) {
+      foodImage =
+        "https://i.pinimg.com/736x/de/0a/ed/de0aedebc6d17dc16a269a13921f5492.jpg";
+    }
+
+    const newRecipe = {
+      name: foodName,
+      country: foodCountry,
+      ingredients: ingredients,
+      method: foodMethod,
+      pictureUrl: foodImage,
+      type: "",
+    };
+    newRecipeContainer.innerHTML = `
+    <div class="food-img-container">
+      <img src=${foodImage}>
+    </div>
+    <h2 class="food-name">${foodName}</h2>
+    <button class="read-more-btn">Read More</button>
+    `;
+    recipesContainer.appendChild(newRecipeContainer);
+    const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
+    newReadMoreBtn.addEventListener("click", () => {
+      overlay.style.display = "block";
+      openPopup(newRecipe);
+    });
+  });
 
   fetch("./recipes.json")
     .then((response) => response.json())
     .then((data) => {
       const recipes = data.recipes;
-      renderRecipes(recipes)
+      renderRecipes(recipes);
 
       // render function----------------------------------------------
 
@@ -144,66 +178,48 @@ document.addEventListener("DOMContentLoaded", function () {
           <button class="read-more-btn">Read More</button>
           `;
           recipesContainer.appendChild(recipeCard);
-          const openPopupButton = recipeCard.querySelector('.read-more-btn')
-          openPopupButton.addEventListener('click' , ()=>{
-            overlay.style.display = "block"
-            openPopup(recipe)
-          })
+          const openPopupButton = recipeCard.querySelector(".read-more-btn");
+          openPopupButton.addEventListener("click", () => {
+            overlay.style.display = "block";
+            openPopup(recipe);
+          });
         });
       }
       // FILTERS----------------------------------------------------
       // ALL
-      allRecipes.addEventListener('click', () => {
-        recipesContainer.textContent = ""
+      allRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
         renderRecipes(recipes);
       });
 
       // CHICKEN
-      chickenRecipes.addEventListener('click', ()=>{
-        recipesContainer.textContent = ""
-        const chicken = recipes.filter(recipe => recipe.type === 'chicken');
+      chickenRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const chicken = recipes.filter((recipe) => recipe.type === "chicken");
         renderRecipes(chicken);
       });
 
       // MEAT
-      meatRecipes.addEventListener('click' , () => {
-        recipesContainer.textContent = ""
-        const meat = recipes.filter(recipe => recipe.type === 'meat');
+      meatRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const meat = recipes.filter((recipe) => recipe.type === "meat");
         renderRecipes(meat);
       });
 
       // SEAFOOD
-      seafoodRecipes.addEventListener('click' , () => {
-        recipesContainer.textContent = ""
-        const seafood = recipes.filter(recipe => recipe.type === 'seafood');
+      seafoodRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const seafood = recipes.filter((recipe) => recipe.type === "seafood");
         renderRecipes(seafood);
       });
 
       // VEGETARIAN
-      vegetarianRecipes.addEventListener('click' , () => {
-        recipesContainer.textContent = ""
-        const vegetarian = recipes.filter(recipe => recipe.type === 'vegetarian');
+      vegetarianRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const vegetarian = recipes.filter(
+          (recipe) => recipe.type === "vegetarian"
+        );
         renderRecipes(vegetarian);
       });
-
-      // POPUP ----------------------------------------------------
-      function openPopup(recipe){
-        popupIngredientsUl.textContent = ""
-        popupContainer.style.display = "block"
-        popupTitle.textContent = recipe.name;
-        popupImage.src = recipe.pictureUrl;
-        recipe.ingredients.forEach(ingredient => {
-          const popupIngrenientsLi = document.createElement('li');
-          popupIngrenientsLi.innerText = ingredient;
-          popupIngredientsUl.appendChild(popupIngrenientsLi);
-          popupRecipeMethod.textContent = recipe.method;
-          cookingTime.textContent = recipe.cookingTime;
-          country.textContent = recipe.country; 
-        })
-      }   
-      closePopupBtn.addEventListener('click' , ()=>{
-        popupContainer.style.display = "none"
-        overlay.style.display = "none"
-      })
     });
 });
