@@ -255,12 +255,13 @@ main .main-title{
 
 /* Add new recipe form----------------------------------- */
 #add-new-recipe{
+    max-width: 70%;
+    margin: 3rem auto ;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    margin-top: 3rem;
 }
 #add-new-recipe form{
     display: flex;
@@ -270,8 +271,21 @@ main .main-title{
     border-radius: 1rem;
     padding: 2rem;
 }
-#add-new-recipe form input{
-    padding: 0.2rem;
+.general-inputs{
+    display: flex;
+    gap: 1rem;
+    border: none;
+}
+.ingredients-inputs{
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+input[type=text] {
+    width: 15rem;
+    padding: 0.25rem;
+
 }
 .add-ingredient-button , .add-recipe-button{
     background-color:#ed7568;
@@ -282,9 +296,14 @@ main .main-title{
     border-radius: 5rem;
     cursor: pointer;
 }
+.add-ingredient-button{
+    width: 15rem;
+    height: 2rem;
+    border-radius: 1rem;
+}
 #ingredients-container{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 /* media queries--------------------------------- */
