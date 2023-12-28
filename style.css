@@ -120,9 +120,12 @@ header .secondary-nav ul li:hover , header .secondary-nav ul li a:hover{
     font-size: larger;
     cursor: pointer;
 }
-.offcanvas-body ul li:hover{
-    color: #F2796C;
-    
+.offcanvas-body ul li a{
+    text-decoration: none;
+    color: black;
+}
+.offcanvas-body ul li:hover, .offcanvas-body ul li a:hover{
+    color: #F2796C;   
 }
 /* main-------------------------------------*/
 main {

@@ -28,15 +28,15 @@ document.addEventListener("DOMContentLoaded", function () {
   const newRecipeMethod = document.getElementById("add-recipe-method");
   const addRecipeButton = document.querySelector(".add-recipe-button");
   const newFoodImg = document.getElementById("add-food-img");
-  const newCookingTime = document.getElementById('add-cooking-time')
+  const newCookingTime = document.getElementById('add-cooking-time');
 
   // filters-----------------------------------------------------------------
 
-  const allRecipes = document.querySelector(".all-recipes");
-  const chickenRecipes = document.querySelector(".chicken-recipes");
-  const meatRecipes = document.querySelector(".meat-recipes");
-  const seafoodRecipes = document.querySelector(".seafood-recipes");
-  const vegetarianRecipes = document.querySelector(".vegetarian-recipes");
+  const allRecipesLi = document.querySelectorAll(".all-recipes");
+  const chickenRecipesLi = document.querySelectorAll(".chicken-recipes");
+  const meatRecipesLi = document.querySelectorAll(".meat-recipes");
+  const seafoodRecipesLi = document.querySelectorAll(".seafood-recipes");
+  const vegetarianRecipesLi = document.querySelectorAll(".vegetarian-recipes");
 
   // offcanvos------------------------------------------------------------
 
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
       cookingTime: newCookingTime.value,
       type: "",
     };
-    
+
     newRecipeContainer.innerHTML = `
     <div class="food-img-container">
       <img src=${newRecipe.pictureUrl}>
@@ -186,39 +186,50 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       // FILTERS----------------------------------------------------
       // ALL
-      allRecipes.addEventListener("click", () => {
-        recipesContainer.textContent = "";
-        renderRecipes(recipes);
+      allRecipesLi.forEach(allRecipes => {
+        allRecipes.addEventListener("click", () => {
+          recipesContainer.textContent = "";
+          renderRecipes(recipes);
+        });
       });
-
+      
       // CHICKEN
-      chickenRecipes.addEventListener("click", () => {
-        recipesContainer.textContent = "";
-        const chicken = recipes.filter((recipe) => recipe.type === "chicken");
-        renderRecipes(chicken);
-      });
+        chickenRecipesLi.forEach(chickenRecipes => {
+          chickenRecipes.addEventListener('click' , () => {
+            recipesContainer.textContent = "";
+            const chicken = recipes.filter((recipe) => recipe.type === "chicken");
+            renderRecipes(chicken)
+          });
+        });
 
       // MEAT
-      meatRecipes.addEventListener("click", () => {
-        recipesContainer.textContent = "";
-        const meat = recipes.filter((recipe) => recipe.type === "meat");
-        renderRecipes(meat);
+      meatRecipesLi.forEach(meatRecipes => {
+        meatRecipes.addEventListener("click", () => {
+          recipesContainer.textContent = "";
+          const meat = recipes.filter((recipe) => recipe.type === "meat");
+          renderRecipes(meat);
+        });
       });
-
+      
       // SEAFOOD
-      seafoodRecipes.addEventListener("click", () => {
-        recipesContainer.textContent = "";
-        const seafood = recipes.filter((recipe) => recipe.type === "seafood");
-        renderRecipes(seafood);
+      seafoodRecipesLi.forEach(seafoodRecipes => {
+        seafoodRecipes.addEventListener("click", () => {
+          recipesContainer.textContent = "";
+          const seafood = recipes.filter((recipe) => recipe.type === "seafood");
+          renderRecipes(seafood);
+        });  
       });
-
+     
       // VEGETARIAN
-      vegetarianRecipes.addEventListener("click", () => {
-        recipesContainer.textContent = "";
-        const vegetarian = recipes.filter(
-          (recipe) => recipe.type === "vegetarian"
-        );
-        renderRecipes(vegetarian);
+      vegetarianRecipesLi.forEach(vegetarianRecipes => {
+        vegetarianRecipes.addEventListener("click", () => {
+          recipesContainer.textContent = "";
+          const vegetarian = recipes.filter(
+            (recipe) => recipe.type === "vegetarian"
+          );
+          renderRecipes(vegetarian);
+        });
       });
+     
     });
 });
