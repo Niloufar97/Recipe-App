@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const openOffcanvasButton = document.getElementById("openOffcanvas");
   const offcanvas = document.getElementById("offcanvas");
+  const offcanvasAddNewRecipeLink = document.querySelector('.offcanvas-add-new-recipe')
 
   // popup--------------------------------------------------------------
 
@@ -44,10 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
     offcanvas.style.right = offcanvas.style.right === "0" ? "-100%" : "0";
   });
 
-  const closeOffcanvasButton = document.getElementById("closeOffcanvas");
-  closeOffcanvasButton.addEventListener("click", function () {
+  const closeOffcanvas = () => {
     offcanvas.style.right = "-100%";
-  });
+  }
+  const closeOffcanvasButton = document.getElementById("closeOffcanvas");
+  closeOffcanvasButton.addEventListener("click", closeOffcanvas);
+
+  // close offcanvose when click on add new recipe link
+
+  offcanvasAddNewRecipeLink.addEventListener('click' , closeOffcanvas)
 
   // smooth animation for header-------------------------------------------------
 
@@ -190,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
         allRecipes.addEventListener("click", () => {
           recipesContainer.textContent = "";
           renderRecipes(recipes);
+          closeOffcanvas();
         });
       });
       
@@ -198,7 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
           chickenRecipes.addEventListener('click' , () => {
             recipesContainer.textContent = "";
             const chicken = recipes.filter((recipe) => recipe.type === "chicken");
-            renderRecipes(chicken)
+            renderRecipes(chicken);
+            closeOffcanvas();
           });
         });
 
@@ -208,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
           recipesContainer.textContent = "";
           const meat = recipes.filter((recipe) => recipe.type === "meat");
           renderRecipes(meat);
+          closeOffcanvas();
         });
       });
       
@@ -217,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
           recipesContainer.textContent = "";
           const seafood = recipes.filter((recipe) => recipe.type === "seafood");
           renderRecipes(seafood);
+          closeOffcanvas();
         });  
       });
      
@@ -228,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
             (recipe) => recipe.type === "vegetarian"
           );
           renderRecipes(vegetarian);
+          closeOffcanvas();
         });
       });
      
