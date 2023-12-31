@@ -261,7 +261,8 @@ document.addEventListener("DOMContentLoaded", function () {
             const lowerCaseName = recipe.name.toLowerCase();
             const LowerCaseCountry = recipe.country.toLowerCase();
             const lowerCaseIngredints = recipe.ingredients.map(ingredient =>  ingredient.toLowerCase())
-            return (lowerCaseName.includes(searchWord) || LowerCaseCountry.includes(searchWord) || lowerCaseIngredints.includes(searchWord))
+            const isSearchWordInIngredients = lowerCaseIngredints.some(ingredient => ingredient.includes(searchWord))
+            return (lowerCaseName.includes(searchWord) || LowerCaseCountry.includes(searchWord) || isSearchWordInIngredients)
           })
           recipesContainer.textContent = ''
           renderRecipes(searchedRecipes);
