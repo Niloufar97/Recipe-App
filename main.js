@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const seafoodRecipesLi = document.querySelectorAll(".seafood-recipes");
   const vegetarianRecipesLi = document.querySelectorAll(".vegetarian-recipes");
 
+  // SEARCH----------------------------------------------------------
+
+  const searchInputs = document.querySelectorAll('.search-input')
+  const searchButtons = document.querySelectorAll('.search-btn')
+
   // offcanvos------------------------------------------------------------
 
   openOffcanvasButton.addEventListener("click", function () {
@@ -242,5 +247,28 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       });
      
+      // SEARCH------------------------------------------------------------------
+      let searchWord = '';
+      searchInputs.forEach(searchInput =>{
+        searchInput.addEventListener('input' , () => {
+          const inputValue = searchInput.value;
+          searchWord = inputValue.toLowerCase()
+        })
+      })
+      searchButtons.forEach(searchButton => {
+        searchButton.addEventListener('click' , () => {   
+         const searchedRecipes = recipes.filter(recipe => {
+            const lowerCaseName = recipe.name.toLowerCase();
+            const LowerCaseCountry = recipe.country.toLowerCase();
+            const lowerCaseIngredints = recipe.ingredients.map(ingredient =>  ingredient.toLowerCase())
+            return (lowerCaseName.includes(searchWord) || LowerCaseCountry.includes(searchWord) || lowerCaseIngredints.includes(searchWord))
+          })
+          recipesContainer.textContent = ''
+          renderRecipes(searchedRecipes);
+        })
+      
+      })
+
+
     });
 });
