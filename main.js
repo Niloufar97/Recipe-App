@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const openOffcanvasButton = document.getElementById("openOffcanvas");
   const offcanvas = document.getElementById("offcanvas");
-  const offcanvasAddNewRecipeLink = document.querySelector('.offcanvas-add-new-recipe')
+  const offcanvasAddNewRecipeLink = document.querySelector(
+    ".offcanvas-add-new-recipe"
+  );
 
   // popup--------------------------------------------------------------
 
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const newRecipeMethod = document.getElementById("add-recipe-method");
   const addRecipeButton = document.querySelector(".add-recipe-button");
   const newFoodImg = document.getElementById("add-food-img");
-  const newCookingTime = document.getElementById('add-cooking-time');
+  const newCookingTime = document.getElementById("add-cooking-time");
 
   // filters-----------------------------------------------------------------
 
@@ -41,8 +43,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // SEARCH----------------------------------------------------------
 
-  const searchInputs = document.querySelectorAll('.search-input')
-  const searchButtons = document.querySelectorAll('.search-btn')
+  const searchInputs = document.querySelectorAll(".search-input");
+  const searchButtons = document.querySelectorAll(".search-btn");
 
   // offcanvos------------------------------------------------------------
 
@@ -52,13 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const closeOffcanvas = () => {
     offcanvas.style.right = "-100%";
-  }
+  };
   const closeOffcanvasButton = document.getElementById("closeOffcanvas");
   closeOffcanvasButton.addEventListener("click", closeOffcanvas);
 
   // close offcanvose when click on add new recipe link
 
-  offcanvasAddNewRecipeLink.addEventListener('click' , closeOffcanvas)
+  offcanvasAddNewRecipeLink.addEventListener("click", closeOffcanvas);
 
   // smooth animation for header-------------------------------------------------
 
@@ -197,26 +199,26 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       // FILTERS----------------------------------------------------
       // ALL
-      allRecipesLi.forEach(allRecipes => {
+      allRecipesLi.forEach((allRecipes) => {
         allRecipes.addEventListener("click", () => {
           recipesContainer.textContent = "";
           renderRecipes(recipes);
           closeOffcanvas();
         });
       });
-      
+
       // CHICKEN
-        chickenRecipesLi.forEach(chickenRecipes => {
-          chickenRecipes.addEventListener('click' , () => {
-            recipesContainer.textContent = "";
-            const chicken = recipes.filter((recipe) => recipe.type === "chicken");
-            renderRecipes(chicken);
-            closeOffcanvas();
-          });
+      chickenRecipesLi.forEach((chickenRecipes) => {
+        chickenRecipes.addEventListener("click", () => {
+          recipesContainer.textContent = "";
+          const chicken = recipes.filter((recipe) => recipe.type === "chicken");
+          renderRecipes(chicken);
+          closeOffcanvas();
         });
+      });
 
       // MEAT
-      meatRecipesLi.forEach(meatRecipes => {
+      meatRecipesLi.forEach((meatRecipes) => {
         meatRecipes.addEventListener("click", () => {
           recipesContainer.textContent = "";
           const meat = recipes.filter((recipe) => recipe.type === "meat");
@@ -224,19 +226,19 @@ document.addEventListener("DOMContentLoaded", function () {
           closeOffcanvas();
         });
       });
-      
+
       // SEAFOOD
-      seafoodRecipesLi.forEach(seafoodRecipes => {
+      seafoodRecipesLi.forEach((seafoodRecipes) => {
         seafoodRecipes.addEventListener("click", () => {
           recipesContainer.textContent = "";
           const seafood = recipes.filter((recipe) => recipe.type === "seafood");
           renderRecipes(seafood);
           closeOffcanvas();
-        });  
+        });
       });
-     
+
       // VEGETARIAN
-      vegetarianRecipesLi.forEach(vegetarianRecipes => {
+      vegetarianRecipesLi.forEach((vegetarianRecipes) => {
         vegetarianRecipes.addEventListener("click", () => {
           recipesContainer.textContent = "";
           const vegetarian = recipes.filter(
@@ -246,30 +248,41 @@ document.addEventListener("DOMContentLoaded", function () {
           closeOffcanvas();
         });
       });
-     
+
       // SEARCH------------------------------------------------------------------
-      let searchWord = '';
-      searchInputs.forEach(searchInput =>{
-        searchInput.addEventListener('input' , () => {
+      let searchWord = "";
+      // save value of the search input
+      searchInputs.forEach((searchInput) => {
+        searchInput.addEventListener("change", () => {
           const inputValue = searchInput.value;
-          searchWord = inputValue.toLowerCase()
-        })
-      })
-      searchButtons.forEach(searchButton => {
-        searchButton.addEventListener('click' , () => {   
-         const searchedRecipes = recipes.filter(recipe => {
+          searchWord = inputValue.toLowerCase();
+        });
+      });
+      // event listener for search buttons
+      searchButtons.forEach((searchButton) => {
+        searchButton.addEventListener("click", () => {
+          const searchedRecipes = recipes.filter((recipe) => {
             const lowerCaseName = recipe.name.toLowerCase();
             const LowerCaseCountry = recipe.country.toLowerCase();
-            const lowerCaseIngredints = recipe.ingredients.map(ingredient =>  ingredient.toLowerCase())
-            const isSearchWordInIngredients = lowerCaseIngredints.some(ingredient => ingredient.includes(searchWord))
-            return (lowerCaseName.includes(searchWord) || LowerCaseCountry.includes(searchWord) || isSearchWordInIngredients)
-          })
-          recipesContainer.textContent = ''
-          searchedRecipes.length === 0 ? recipesContainer.innerHTML = `<h2>Recipe Not Found</h2>` : renderRecipes(searchedRecipes);
+            const lowerCaseIngredints = recipe.ingredients.map((ingredient) =>
+              ingredient.toLowerCase()
+            );
+            const isSearchWordInIngredients = lowerCaseIngredints.some(
+              (ingredient) => ingredient.includes(searchWord)
+            );
+            return (
+              lowerCaseName.includes(searchWord) ||
+              LowerCaseCountry.includes(searchWord) ||
+              isSearchWordInIngredients
+            );
+          });
+          recipesContainer.textContent = "";
+          searchedRecipes.length === 0
+            ? (recipesContainer.innerHTML = `<h2>Recipe Not Found</h2>`)
+            : renderRecipes(searchedRecipes);
           closeOffcanvas();
-        })
-      })
-
-
+          
+        });
+      });
     });
 });
