@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const addRecipeButton = document.querySelector(".add-recipe-button");
   const newFoodImg = document.getElementById("add-food-img");
   const newCookingTime = document.getElementById("add-cooking-time");
+  const addRecipeForm = document.getElementById('add-new-recipe-form');
 
   // filters-----------------------------------------------------------------
 
@@ -163,6 +164,9 @@ document.addEventListener("DOMContentLoaded", function () {
     <button class="read-more-btn">Read More</button>
     `;
     recipesContainer.appendChild(newRecipeContainer);
+    addRecipeForm.reset();
+
+    
     const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
     newReadMoreBtn.addEventListener("click", () => {
       overlay.style.display = "block";
