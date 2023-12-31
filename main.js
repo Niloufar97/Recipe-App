@@ -265,7 +265,8 @@ document.addEventListener("DOMContentLoaded", function () {
             return (lowerCaseName.includes(searchWord) || LowerCaseCountry.includes(searchWord) || isSearchWordInIngredients)
           })
           recipesContainer.textContent = ''
-          searchedRecipes.length === 0 ? recipesContainer.innerHTML = `<h2>Recipe Not Found</h2>` : renderRecipes(searchedRecipes)
+          searchedRecipes.length === 0 ? recipesContainer.innerHTML = `<h2>Recipe Not Found</h2>` : renderRecipes(searchedRecipes);
+          closeOffcanvas();
         })
       })
 
