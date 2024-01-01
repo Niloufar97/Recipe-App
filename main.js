@@ -176,6 +176,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addNewRecipe(newRecipe);
     addRecipeForm.reset();
+    ingredients = [];
+
   });
 
   // fetch data from json----------------------------------------
