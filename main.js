@@ -135,10 +135,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // save newIngredients in local storage
+
+  const saveNewRecipesInLocal = (newRecipe) => {
+    let recipes = JSON.parse(localStorage.getItem('newRecipes')) || [];
+    recipes.push(newRecipe);
+    localStorage.setItem('newRecipes',JSON.stringify(recipes));
+  }
+
   // show new recipe in recipe container
   // appendChild new recipe card
 
-  const addNewRecipe = (newRecipe) => {
+  const addNewRecipeToContainer = (newRecipe) => {
     const newRecipeContainer = document.createElement("div");
     newRecipeContainer.classList.add("recipe-card");
     newRecipeContainer.innerHTML = `
@@ -174,11 +182,21 @@ document.addEventListener("DOMContentLoaded", function () {
       cookingTime: newCookingTime.value,
     };
 
-    addNewRecipe(newRecipe);
+    addNewRecipeToContainer(newRecipe);
+    saveNewRecipesInLocal(newRecipe);
     addRecipeForm.reset();
     ingredients = [];
 
   });
+
+  // load recipes from local storage
+
+  window.addEventListener('load' , () => {
+    let savedRecipes = JSON.parse(localStorage.getItem('newRecipes')) || [];
+    savedRecipes.forEach(savesRecipe => {
+      addNewRecipeToContainer(savesRecipe);
+    })
+  })
 
   // fetch data from json----------------------------------------
   fetch("./recipes.json")
