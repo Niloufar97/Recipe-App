@@ -136,10 +136,29 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // show new recipe in recipe container
+  // appendChild new recipe card
 
-  addRecipeButton.addEventListener("click", () => {
+  const addNewRecipe = (newRecipe) => {
     const newRecipeContainer = document.createElement("div");
     newRecipeContainer.classList.add("recipe-card");
+    newRecipeContainer.innerHTML = `
+    <div class="food-img-container">
+      <img src=${newRecipe.pictureUrl}>
+    </div>
+    <h2 class="food-name">${newRecipe.name}</h2>
+    <button class="read-more-btn">Read More</button>
+    `;
+    recipesContainer.appendChild(newRecipeContainer);
+    const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
+    newReadMoreBtn.addEventListener("click", () => {
+      overlay.style.display = "block";
+      openPopup(newRecipe);
+    });
+  };
+
+  // when click on add new recipe button
+  addRecipeButton.addEventListener("click", () => {
+   
     let foodImage = newFoodImg.value;
     if (!foodImage) {
       foodImage =
@@ -153,27 +172,13 @@ document.addEventListener("DOMContentLoaded", function () {
       method: newRecipeMethod.value,
       pictureUrl: foodImage,
       cookingTime: newCookingTime.value,
-      type: "",
     };
 
-    newRecipeContainer.innerHTML = `
-    <div class="food-img-container">
-      <img src=${newRecipe.pictureUrl}>
-    </div>
-    <h2 class="food-name">${newRecipe.name}</h2>
-    <button class="read-more-btn">Read More</button>
-    `;
-    recipesContainer.appendChild(newRecipeContainer);
+    addNewRecipe(newRecipe);
     addRecipeForm.reset();
-
-    
-    const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
-    newReadMoreBtn.addEventListener("click", () => {
-      overlay.style.display = "block";
-      openPopup(newRecipe);
-    });
   });
 
+  // fetch data from json----------------------------------------
   fetch("./recipes.json")
     .then((response) => response.json())
     .then((data) => {
