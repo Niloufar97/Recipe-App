@@ -199,10 +199,10 @@ document.addEventListener("DOMContentLoaded", function () {
   })
 
   // fetch data from json----------------------------------------
-  fetch("./recipes.json")
-    .then((response) => response.json())
-    .then((data) => {
-      const recipes = data.recipes;
+  axios.get("http://localhost:3000/recipes")
+    .then((response) => {
+      const recipes = response.data;
+      console.log(recipes)
       renderRecipes(recipes);
 
       // render function----------------------------------------------
