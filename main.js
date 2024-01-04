@@ -133,19 +133,35 @@ document.addEventListener("DOMContentLoaded", function () {
     recipesToRender.map((recipe) => {
       const recipeCard = document.createElement("div");
       recipeCard.classList.add("recipe-card");
+      recipeCard.id = recipe.id;
       recipeCard.innerHTML = `
             <div class="food-img-container">
                 <img src=${recipe.pictureUrl}>
             </div>
             <h2 class="food-name">${recipe.name}</h2>
-            <button class="read-more-btn">Read More</button>
+            <div class="card-buttons">
+              <button class="read-more-btn">Read More</button>
+              <button class="delete-btn">Delete</button>
+            </div>
             `;
       recipesContainer.appendChild(recipeCard);
+      // open popup
       const openPopupButton = recipeCard.querySelector(".read-more-btn");
       openPopupButton.addEventListener("click", () => {
         overlay.style.display = "block";
         openPopup(recipe);
       });
+      // delete recipe
+      const deleteRecipeButton = recipeCard.querySelector(".delete-btn");
+      deleteRecipeButton.addEventListener('click' , (e) => {
+        let target = e.target;
+        while (target && !target.classList.contains('recipe-card')) {
+          target = target.parentNode;
+        }
+        const dataId = target.id;
+        console.log(dataId)
+        axios.delete(`http://localhost:3000/recipes/${dataId}`)
+      })
     });
   }
   // FILTERS----------------------------------------------------

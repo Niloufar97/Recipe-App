@@ -167,8 +167,13 @@ main .main-title{
 .food-name{
     margin-top: 1.5rem;
 }
-.read-more-btn{
-    width:10rem;
+.card-buttons{
+    margin-top: 0.4rem;
+    display: flex;
+    gap: 0.7rem;
+}
+.read-more-btn, .delete-btn{
+    width:7rem;
     padding: 0.5rem;
     margin-top: 1rem;
     background-color: #F2796C;
