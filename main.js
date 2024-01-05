@@ -1,14 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // fetch data from json----------------------------------------
-  axios.get("http://localhost:3000/recipes").then((response) => {
-    const recipes = response.data;
-    renderRecipes(recipes);
-
-    const recipeIds = recipes.map(recipe => recipe.id);
-    recipeIds.sort((a,b)=>b-a)
-    idMaker = recipeIds[0]+1;
-  });
-
   let idMaker;
 
   const recipesContainer = document.getElementById("recipes-container");
@@ -107,34 +97,45 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollPosition = currentScrollPosition;
   });
 
-  // OPEN POPUP ----------------------------------------------------
-  function openPopup(recipe) {
-    popupIngredientsUl.textContent = "";
-    popupContainer.style.display = "block";
-    popupTitle.textContent = recipe.name;
-    popupImage.src = recipe.pictureUrl;
-    recipe.ingredients.forEach((ingredient) => {
-      const popupIngrenientsLi = document.createElement("li");
-      popupIngrenientsLi.innerText = ingredient;
-      popupIngredientsUl.appendChild(popupIngrenientsLi);
-      popupRecipeMethod.textContent = recipe.method;
-      cookingTime.textContent = recipe.cookingTime;
-      country.textContent = recipe.country;
+  // FETCH DATA----------------------------------------
+
+  axios.get("http://localhost:3000/recipes").then((response) => {
+    const recipes = response.data;
+    renderRecipes(recipes);
+
+    // GET ID FOR DELETE DATA
+    const recipeIds = recipes.map((recipe) => recipe.id);
+    recipeIds.sort((a, b) => b - a);
+    idMaker = recipeIds[0] + 1;
+
+    // OPEN POPUP FUNCTION ----------------------------------------------------
+    function openPopup(recipe) {
+      popupIngredientsUl.textContent = "";
+      popupContainer.style.display = "block";
+      popupTitle.textContent = recipe.name;
+      popupImage.src = recipe.pictureUrl;
+      recipe.ingredients.forEach((ingredient) => {
+        const popupIngrenientsLi = document.createElement("li");
+        popupIngrenientsLi.innerText = ingredient;
+        popupIngredientsUl.appendChild(popupIngrenientsLi);
+        popupRecipeMethod.textContent = recipe.method;
+        cookingTime.textContent = recipe.cookingTime;
+        country.textContent = recipe.country;
+      });
+    }
+    closePopupBtn.addEventListener("click", () => {
+      popupContainer.style.display = "none";
+      overlay.style.display = "none";
     });
-  }
-  closePopupBtn.addEventListener("click", () => {
-    popupContainer.style.display = "none";
-    overlay.style.display = "none";
-  });
 
-  // render function----------------------------------------------
+    // RENDER RECIPES FUNCTION----------------------------------------------
 
-  function renderRecipes(recipesToRender) {
-    recipesToRender.map((recipe) => {
-      const recipeCard = document.createElement("div");
-      recipeCard.classList.add("recipe-card");
-      recipeCard.id = recipe.id;
-      recipeCard.innerHTML = `
+    function renderRecipes(recipesToRender) {
+      recipesToRender.map((recipe) => {
+        const recipeCard = document.createElement("div");
+        recipeCard.classList.add("recipe-card");
+        recipeCard.id = recipe.id;
+        recipeCard.innerHTML = `
             <div class="food-img-container">
                 <img src=${recipe.pictureUrl}>
             </div>
@@ -144,192 +145,194 @@ document.addEventListener("DOMContentLoaded", function () {
               <button class="delete-btn">Delete</button>
             </div>
             `;
-      recipesContainer.appendChild(recipeCard);
-      // open popup
-      const openPopupButton = recipeCard.querySelector(".read-more-btn");
-      openPopupButton.addEventListener("click", () => {
-        overlay.style.display = "block";
-        openPopup(recipe);
+        recipesContainer.appendChild(recipeCard);
+        // OPEN POPUP
+        const openPopupButton = recipeCard.querySelector(".read-more-btn");
+        openPopupButton.addEventListener("click", () => {
+          overlay.style.display = "block";
+          openPopup(recipe);
+        });
+
+        // DELETE RECIPE
+        const deleteRecipeButton = recipeCard.querySelector(".delete-btn");
+        deleteRecipeButton.addEventListener("click", (e) => {
+          let target = e.target;
+          while (target && !target.classList.contains("recipe-card")) {
+            target = target.parentNode;
+          }
+          const dataId = target.id;
+          console.log(dataId);
+          axios.delete(`http://localhost:3000/recipes/${dataId}`);
+        });
       });
-      // delete recipe
-      const deleteRecipeButton = recipeCard.querySelector(".delete-btn");
-      deleteRecipeButton.addEventListener('click' , (e) => {
-        let target = e.target;
-        while (target && !target.classList.contains('recipe-card')) {
-          target = target.parentNode;
-        }
-        const dataId = target.id;
-        console.log(dataId)
-        axios.delete(`http://localhost:3000/recipes/${dataId}`)
-      })
-    });
-  }
-  // FILTERS----------------------------------------------------
-  // ALL
-  allRecipesLi.forEach((allRecipes) => {
-    allRecipes.addEventListener("click", () => {
-      recipesContainer.textContent = "";
-      renderRecipes(recipes);
-      closeOffcanvas();
-    });
-  });
-
-  // CHICKEN
-  chickenRecipesLi.forEach((chickenRecipes) => {
-    chickenRecipes.addEventListener("click", () => {
-      recipesContainer.textContent = "";
-      const chicken = recipes.filter((recipe) => recipe.type === "chicken");
-      renderRecipes(chicken);
-      closeOffcanvas();
-    });
-  });
-
-  // MEAT
-  meatRecipesLi.forEach((meatRecipes) => {
-    meatRecipes.addEventListener("click", () => {
-      recipesContainer.textContent = "";
-      const meat = recipes.filter((recipe) => recipe.type === "meat");
-      renderRecipes(meat);
-      closeOffcanvas();
-    });
-  });
-
-  // SEAFOOD
-  seafoodRecipesLi.forEach((seafoodRecipes) => {
-    seafoodRecipes.addEventListener("click", () => {
-      recipesContainer.textContent = "";
-      const seafood = recipes.filter((recipe) => recipe.type === "seafood");
-      renderRecipes(seafood);
-      closeOffcanvas();
-    });
-  });
-
-  // VEGETARIAN
-  vegetarianRecipesLi.forEach((vegetarianRecipes) => {
-    vegetarianRecipes.addEventListener("click", () => {
-      recipesContainer.textContent = "";
-      const vegetarian = recipes.filter(
-        (recipe) => recipe.type === "vegetarian"
-      );
-      renderRecipes(vegetarian);
-      closeOffcanvas();
-    });
-  });
-
-  // SEARCH------------------------------------------------------------------
-  let searchWord = "";
-  // save value of the search input
-  searchInputs.forEach((searchInput) => {
-    searchInput.addEventListener("change", () => {
-      const inputValue = searchInput.value;
-      searchWord = inputValue.toLowerCase();
-    });
-  });
-  // event listener for search buttons
-  searchButtons.forEach((searchButton) => {
-    searchButton.addEventListener("click", () => {
-      const searchedRecipes = recipes.filter((recipe) => {
-        const lowerCaseName = recipe.name.toLowerCase();
-        const LowerCaseCountry = recipe.country.toLowerCase();
-        const lowerCaseIngredints = recipe.ingredients.map((ingredient) =>
-          ingredient.toLowerCase()
-        );
-        const isSearchWordInIngredients = lowerCaseIngredints.some(
-          (ingredient) => ingredient.includes(searchWord)
-        );
-        return (
-          lowerCaseName.includes(searchWord) ||
-          LowerCaseCountry.includes(searchWord) ||
-          isSearchWordInIngredients
-        );
-      });
-      recipesContainer.textContent = "";
-      searchedRecipes.length === 0
-        ? (recipesContainer.innerHTML = `<h2>Recipe Not Found</h2>`)
-        : renderRecipes(searchedRecipes);
-      closeOffcanvas();
-    });
-  });
-
-  // add new recip functionality---------------------------------------------
-  // Add Ingredients
-  let ingredients = [];
-
-  addIngredientsButton.addEventListener("click", () => {
-    const ingredientInput = document.createElement("input");
-    ingredientInput.type = "text";
-    ingredientInput.classList.add("newIngredient");
-    ingredientsContainer.appendChild(ingredientInput);
-    ingredientInput.addEventListener("change", () => {
-      ingredients.push(ingredientInput.value);
-    });
-  });
-
-  ingredientInputs.forEach((ingredientInput) => {
-    ingredientInput.addEventListener("change", () => {
-      ingredients.push(ingredientInput.value);
-    });
-  });
-
-  // save newIngredients in local storage
-  // const saveNewRecipesInLocal = (newRecipe) => {
-  //   let recipes = JSON.parse(localStorage.getItem("newRecipes")) || [];
-  //   recipes.push(newRecipe);
-  //   localStorage.setItem("newRecipes", JSON.stringify(recipes));
-  // };
-
-
-  // show new recipe in recipe container
-  // appendChild new recipe card
-
-  // const addNewRecipeToContainer = (newRecipe) => {
-  //   const newRecipeContainer = document.createElement("div");
-  //   newRecipeContainer.classList.add("recipe-card");
-  //   newRecipeContainer.innerHTML = `
-  //   <div class="food-img-container">
-  //     <img src=${newRecipe.pictureUrl}>
-  //   </div>
-  //   <h2 class="food-name">${newRecipe.name}</h2>
-  //   <button class="read-more-btn">Read More</button>
-  //   `;
-  //   recipesContainer.appendChild(newRecipeContainer);
-  //   const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
-  //   newReadMoreBtn.addEventListener("click", () => {
-  //     overlay.style.display = "block";
-  //     openPopup(newRecipe);
-  //   });
-  // };
-
-  //EventListener for add new recipe button
-  addRecipeButton.addEventListener("click", () => {
-    let foodImage = newFoodImg.value;
-    if (!foodImage) {
-      foodImage =
-        "https://i.pinimg.com/736x/de/0a/ed/de0aedebc6d17dc16a269a13921f5492.jpg";
     }
 
-    const newRecipe = {
-      id: idMaker,
-      name: newFoodName.value,
-      country: newFoodCountry.value,
-      ingredients: ingredients,
-      method: newRecipeMethod.value,
-      pictureUrl: foodImage,
-      cookingTime: newCookingTime.value,
-      type: ""
-    };
-    console.log(idMaker)
-    // addNewRecipeToContainer(newRecipe);
-    axios.post("http://localhost:3000/recipes" , newRecipe)
-    addRecipeForm.reset();
-    ingredients = [];
-  });
+    // FILTERS----------------------------------------------------
+    // ALL
+    allRecipesLi.forEach((allRecipes) => {
+      allRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        renderRecipes(recipes);
+        closeOffcanvas();
+      });
+    });
 
-  // load recipes from local storage
-  // window.addEventListener("load", () => {
-  //   let savedRecipes = JSON.parse(localStorage.getItem("newRecipes")) || [];
-  //   savedRecipes.forEach((savesRecipe) => {
-  //     addNewRecipeToContainer(savesRecipe);
-  //   });
-  // });
+    // CHICKEN
+    chickenRecipesLi.forEach((chickenRecipes) => {
+      chickenRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const chicken = recipes.filter((recipe) => recipe.type === "chicken");
+        renderRecipes(chicken);
+        closeOffcanvas();
+      });
+    });
+
+    // MEAT
+    meatRecipesLi.forEach((meatRecipes) => {
+      meatRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const meat = recipes.filter((recipe) => recipe.type === "meat");
+        renderRecipes(meat);
+        closeOffcanvas();
+      });
+    });
+
+    // SEAFOOD
+    seafoodRecipesLi.forEach((seafoodRecipes) => {
+      seafoodRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const seafood = recipes.filter((recipe) => recipe.type === "seafood");
+        renderRecipes(seafood);
+        closeOffcanvas();
+      });
+    });
+
+    // VEGETARIAN
+    vegetarianRecipesLi.forEach((vegetarianRecipes) => {
+      vegetarianRecipes.addEventListener("click", () => {
+        recipesContainer.textContent = "";
+        const vegetarian = recipes.filter(
+          (recipe) => recipe.type === "vegetarian"
+        );
+        renderRecipes(vegetarian);
+        closeOffcanvas();
+      });
+    });
+
+    // SEARCH------------------------------------------------------------------
+    let searchWord = "";
+    // save value of the search input
+    searchInputs.forEach((searchInput) => {
+      searchInput.addEventListener("change", () => {
+        const inputValue = searchInput.value;
+        searchWord = inputValue.toLowerCase();
+      });
+    });
+    // event listener for search buttons
+    searchButtons.forEach((searchButton) => {
+      searchButton.addEventListener("click", () => {
+        const searchedRecipes = recipes.filter((recipe) => {
+          const lowerCaseName = recipe.name.toLowerCase();
+          const LowerCaseCountry = recipe.country.toLowerCase();
+          const lowerCaseIngredints = recipe.ingredients.map((ingredient) =>
+            ingredient.toLowerCase()
+          );
+          const isSearchWordInIngredients = lowerCaseIngredints.some(
+            (ingredient) => ingredient.includes(searchWord)
+          );
+          return (
+            lowerCaseName.includes(searchWord) ||
+            LowerCaseCountry.includes(searchWord) ||
+            isSearchWordInIngredients
+          );
+        });
+        recipesContainer.textContent = "";
+        searchedRecipes.length === 0
+          ? (recipesContainer.innerHTML = `<h2>Recipe Not Found</h2>`)
+          : renderRecipes(searchedRecipes);
+        closeOffcanvas();
+      });
+    });
+
+    // ADD NEW RECIPE---------------------------------------------
+    // Add Ingredients
+    let ingredients = [];
+
+    addIngredientsButton.addEventListener("click", () => {
+      const ingredientInput = document.createElement("input");
+      ingredientInput.type = "text";
+      ingredientInput.classList.add("newIngredient");
+      ingredientsContainer.appendChild(ingredientInput);
+      ingredientInput.addEventListener("change", () => {
+        ingredients.push(ingredientInput.value);
+      });
+    });
+
+    ingredientInputs.forEach((ingredientInput) => {
+      ingredientInput.addEventListener("change", () => {
+        ingredients.push(ingredientInput.value);
+      });
+    });
+
+    // save newIngredients in local storage
+    // const saveNewRecipesInLocal = (newRecipe) => {
+    //   let recipes = JSON.parse(localStorage.getItem("newRecipes")) || [];
+    //   recipes.push(newRecipe);
+    //   localStorage.setItem("newRecipes", JSON.stringify(recipes));
+    // };
+
+    // show new recipe in recipe container
+    // appendChild new recipe card
+
+    // const addNewRecipeToContainer = (newRecipe) => {
+    //   const newRecipeContainer = document.createElement("div");
+    //   newRecipeContainer.classList.add("recipe-card");
+    //   newRecipeContainer.innerHTML = `
+    //   <div class="food-img-container">
+    //     <img src=${newRecipe.pictureUrl}>
+    //   </div>
+    //   <h2 class="food-name">${newRecipe.name}</h2>
+    //   <button class="read-more-btn">Read More</button>
+    //   `;
+    //   recipesContainer.appendChild(newRecipeContainer);
+    //   const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
+    //   newReadMoreBtn.addEventListener("click", () => {
+    //     overlay.style.display = "block";
+    //     openPopup(newRecipe);
+    //   });
+    // };
+
+    //EventListener for add new recipe button
+    addRecipeButton.addEventListener("click", () => {
+      let foodImage = newFoodImg.value;
+      if (!foodImage) {
+        foodImage =
+          "https://i.pinimg.com/736x/de/0a/ed/de0aedebc6d17dc16a269a13921f5492.jpg";
+      }
+
+      const newRecipe = {
+        id: idMaker,
+        name: newFoodName.value,
+        country: newFoodCountry.value,
+        ingredients: ingredients,
+        method: newRecipeMethod.value,
+        pictureUrl: foodImage,
+        cookingTime: newCookingTime.value,
+        type: "",
+      };
+      console.log(idMaker);
+      // addNewRecipeToContainer(newRecipe);
+      axios.post("http://localhost:3000/recipes", newRecipe);
+      addRecipeForm.reset();
+      ingredients = [];
+    });
+
+    // load recipes from local storage
+    // window.addEventListener("load", () => {
+    //   let savedRecipes = JSON.parse(localStorage.getItem("newRecipes")) || [];
+    //   savedRecipes.forEach((savesRecipe) => {
+    //     addNewRecipeToContainer(savesRecipe);
+    //   });
+    // });
+  });
 });
