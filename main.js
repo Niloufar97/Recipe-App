@@ -274,34 +274,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // save newIngredients in local storage
-    // const saveNewRecipesInLocal = (newRecipe) => {
-    //   let recipes = JSON.parse(localStorage.getItem("newRecipes")) || [];
-    //   recipes.push(newRecipe);
-    //   localStorage.setItem("newRecipes", JSON.stringify(recipes));
-    // };
-
-    // show new recipe in recipe container
-    // appendChild new recipe card
-
-    // const addNewRecipeToContainer = (newRecipe) => {
-    //   const newRecipeContainer = document.createElement("div");
-    //   newRecipeContainer.classList.add("recipe-card");
-    //   newRecipeContainer.innerHTML = `
-    //   <div class="food-img-container">
-    //     <img src=${newRecipe.pictureUrl}>
-    //   </div>
-    //   <h2 class="food-name">${newRecipe.name}</h2>
-    //   <button class="read-more-btn">Read More</button>
-    //   `;
-    //   recipesContainer.appendChild(newRecipeContainer);
-    //   const newReadMoreBtn = newRecipeContainer.querySelector(".read-more-btn");
-    //   newReadMoreBtn.addEventListener("click", () => {
-    //     overlay.style.display = "block";
-    //     openPopup(newRecipe);
-    //   });
-    // };
-
     //EventListener for add new recipe button
     addRecipeButton.addEventListener("click", () => {
       let foodImage = newFoodImg.value;
@@ -326,13 +298,5 @@ document.addEventListener("DOMContentLoaded", function () {
       addRecipeForm.reset();
       ingredients = [];
     });
-
-    // load recipes from local storage
-    // window.addEventListener("load", () => {
-    //   let savedRecipes = JSON.parse(localStorage.getItem("newRecipes")) || [];
-    //   savedRecipes.forEach((savesRecipe) => {
-    //     addNewRecipeToContainer(savesRecipe);
-    //   });
-    // });
   });
 });
